@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "650cebe2-81eb-4c96-8450-15a881a2f891",
+		"name": "appartment-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "19802068"
+	},
+	"item": [
+		{
+			"name": "Get-Apartments-List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMyODMzMDg5LCJleHAiOjE3MzI5MTk0ODl9.rnv7CHoWKOJyJP5Pe9vJWiOVuFNz_F0rjzUHvrlPw3Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": "http://localhost:3000/api/admin/dashboard"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "x-access-token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
