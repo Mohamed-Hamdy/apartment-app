@@ -13,18 +13,52 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "x-access-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMyODMzMDg5LCJleHAiOjE3MzI5MTk0ODl9.rnv7CHoWKOJyJP5Pe9vJWiOVuFNz_F0rjzUHvrlPw3Q",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": []
 				},
-				"url": "http://localhost:3000/api/admin/dashboard"
+				"url": "http://localhost:5000/api/apartments/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get-Apartment-ById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": "http://localhost:5000/api/apartments/get/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Add-New-Appartment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"unitName\": \"Test Apartment\",\r\n  \"unitNumber\": \"A-101\",\r\n  \"project\": \"Downtown Towers\",\r\n  \"price\": 1200,\r\n  \"description\": \"A nice place to live\",\r\n  \"imageUrl\": \"http://example.com/image.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/api/apartments/add/"
 			},
 			"response": []
 		}

@@ -1,56 +1,40 @@
 import { Request, Response } from 'express';
-import Apartment from '../models/Apartment';
+import * as ApartmentService from '../services/apartmentService';
+import { successResponse, errorResponse } from '../utils/responseWrapper';
+import { HttpException } from '../exceptions/HttpException';
+import { CreateApartmentDto } from '../dto/apartment.dto';
 
-/**
- * GET /apartments?unitName=...&unitNumber=...&project=...
- */
 export const listApartments = async (req: Request, res: Response): Promise<void> => {
-    const { unitName, unitNumber, project } = req.query;
-
-    const where: any = {};
-
-    if (unitName) where.unitName = unitName;
-    if (unitNumber) where.unitNumber = unitNumber;
-    if (project) where.project = project;
-
-    const apartments = await Apartment.findAll({ where });
-    res.json(apartments);
+    try {
+        const apartments = await ApartmentService.listApartments(req.query);
+        res.json(successResponse(apartments, 'Apartments fetched'));
+    } catch (error) {
+        res.status(500).json(errorResponse('Internal server error'));
+    }
 };
 
-/**
- * GET /apartments/:id
- */
 export const getApartment = async (req: Request<{ id: string }>, res: Response): Promise<void> => {
-    const id = req.params.id;
-    const apartment = await Apartment.findByPk(id);
-
-    if (!apartment) {
-        res.status(404).json({ error: 'Apartment not found' });
-        return;
+    try {
+        const apartment = await ApartmentService.getApartmentById(req.params.id);
+        res.json(successResponse(apartment, 'Apartment found'));
+    } catch (error) {
+        if (error instanceof HttpException) {
+            res.status(error.status).json(errorResponse(error.message, error.status));
+        } else {
+            res.status(500).json(errorResponse('Internal server error'));
+        }
     }
-
-    res.json(apartment);
 };
 
-/**
- * POST /apartments
- */
-export const addApartment = async (req: Request, res: Response): Promise<void> => {
-    const { unitName, unitNumber, project, description, price, imageUrl } = req.body;
-
-    if (!unitName || !unitNumber || !project || !price) {
-        res.status(400).json({ error: 'Missing required fields' });
-        return;
+export const addApartment = async (req: Request<{}, {}, CreateApartmentDto>, res: Response): Promise<void> => {
+    try {
+        const newApartment = await ApartmentService.addNewApartment(req.body);
+        res.status(201).json(successResponse(newApartment, 'Apartment created'));
+    } catch (error) {
+        if (error instanceof HttpException) {
+            res.status(error.status).json(errorResponse(error.message, error.status));
+        } else {
+            res.status(500).json(errorResponse('Internal server error'));
+        }
     }
-
-    const newApartment = await Apartment.create({
-        unitName,
-        unitNumber,
-        project,
-        description,
-        price,
-        imageUrl,
-    });
-
-    res.status(201).json(newApartment);
 };

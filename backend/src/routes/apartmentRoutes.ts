@@ -4,7 +4,7 @@ import { listApartments, getApartment, addApartment } from '../controllers/apart
 const router = Router();
 
 router.get('/', listApartments);
-router.get('/:id', getApartment);
-router.post('/addApartment', addApartment);
+router.get('/get/:id', getApartment);
+router.post('/add/', addApartment);
 
 export default router;
