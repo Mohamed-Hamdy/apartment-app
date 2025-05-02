@@ -17,8 +17,10 @@ apartment-app/
 └── frontend/            # Next.js frontend
     ├── src/
     │   ├── app/        # Next.js app directory
-    │   ├── components/ # React components
-    │   └── services/   # API services
+    │   ├───── apartments 
+    │   └───── services/   # API services
+	│   └───── models/   # project models
+    │   └───── config/  
     └── package.json
 ```
 
