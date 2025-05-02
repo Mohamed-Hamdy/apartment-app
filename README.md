@@ -78,7 +78,7 @@ apartment-app/
 
 1. Navigate to the frontend directory:
    ```bash
-   cd frontend/apartment-listing
+   cd frontend
    ```
 
 2. Install dependencies:
