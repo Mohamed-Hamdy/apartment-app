@@ -18,8 +18,8 @@ apartment-app/
     ├── src/
     │   ├── app/        # Next.js app directory
     │   ├───── apartments 
-    │   └───── services/   # API services
-	│   └───── models/   # project models
+    │   ├───── services/   # API services
+	├───── models/   # project models
     │   └───── config/  
     └── package.json
 ```
