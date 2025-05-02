@@ -1,5 +1,5 @@
-import { API_ENDPOINTS, fetchApi } from '../lib/apis/config';
-import { Apartment, ApartmentResponse } from '../types/apartment';
+import { API_ENDPOINTS, fetchApi } from '@/app/config/config';
+import { Apartment, ApartmentResponse } from '../models/apartment';
 
 export const apartmentService = {
   async getApartments(): Promise<ApartmentResponse> {

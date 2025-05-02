@@ -12,7 +12,7 @@ const app = express();
 // cors error when sending request from frontend
 app.use(cors({
     origin: 'http://localhost:3000', // Frontend URL
-    credentials: true, // Optional: if you're using cookies/auth headers
+    credentials: true, // if you're using cookies/auth headers
 }));
 
 app.use(express.json());

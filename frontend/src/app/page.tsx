@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { apartmentService } from './services/apartmentService';
-import { Apartment } from './types/apartment';
+import { Apartment } from './models/apartment';
 
 export default function Home() {
   const [apartments, setApartments] = useState<Apartment[]>([]);
@@ -90,7 +90,7 @@ export default function Home() {
           <p className="text-xl mb-8 text-center max-w-2xl">
             Browse through our collection of premium apartments in prime locations
           </p>
-          
+
           {/* Search Bar */}
           <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-2">
             <div className="flex flex-col md:flex-row gap-2">
@@ -101,7 +101,7 @@ export default function Home() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <select 
+              <select
                 className="p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 bg-white"
                 value={selectedProject}
                 onChange={(e) => setSelectedProject(e.target.value)}
@@ -111,7 +111,7 @@ export default function Home() {
                 <option value="Marina Residences">Marina Residences</option>
                 <option value="City Center Plaza">City Center Plaza</option>
               </select>
-              <button 
+              <button
                 className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors"
                 onClick={handleSearch}
               >
@@ -126,14 +126,14 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900">Available Apartments</h2>
-          <Link 
+          <Link
             href="/apartments/add"
             className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Add Apartment
           </Link>
         </div>
-        
+
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
             {error}
@@ -156,14 +156,14 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-6"> 
+                <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-semibold text-gray-900">{apartment.unitName}</h3>
                     <p className="text-blue-600 font-bold">{apartment.price}</p>
                   </div>
                   <p className="text-gray-600 mb-2">Unit #{apartment.unitNumber}</p>
                   <p className="text-gray-700 mb-4">Project: {apartment.project}</p>
-                  <Link 
+                  <Link
                     href={`/apartments/${apartment.id}`}
                     className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                   >

@@ -1,7 +1,7 @@
 export const API_BASE_URL = 'http://localhost:5000/api';
 
 export const API_ENDPOINTS = {
-  APARTMENTS: `${API_BASE_URL}/apartments`,
+  APARTMENTS: `${API_BASE_URL}/apartments/`,
   GET_APARTMENT: (id: number) => `${API_BASE_URL}/apartments/get/${id}`,
   ADD_APARTMENT: `${API_BASE_URL}/apartments/add/`,
 };
